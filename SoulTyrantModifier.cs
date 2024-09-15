@@ -1,5 +1,6 @@
 ﻿using Modding;
 using SFCore.Utils;
+using HutongGames.PlayMaker;
 using HutongGames.PlayMaker.Actions;
 
 namespace SoulTyrantModifier {
@@ -24,8 +25,7 @@ namespace SoulTyrantModifier {
             orig(self);
 
             if (self.FsmName == "Mage Lord 2" && self.gameObject.name == "Dream Mage Lord") {
-                self.GetAction<RandomFloat>("Shift?", 1).min = 0f;
-                self.GetAction<RandomFloat>("Shift?", 1).max = 0f;
+                self.GetAction<SendRandomEvent>("Shift?", 0).weights = new FsmFloat[]{1f, 0f};
             }
         }
     }
