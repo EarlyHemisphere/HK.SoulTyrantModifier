@@ -16,15 +16,15 @@ namespace SoulTyrantModifier {
         public override void Initialize() {
             Log("Initializing");
 
-            On.PlayMakerFSM.Update += OnUpdate;
+            On.PlayMakerFSM.OnEnable += OnEnable;
 
             Log("Initialized");
         }
 
-        public void OnUpdate(On.PlayMakerFSM.orig_Update orig, PlayMakerFSM self) {
+        public void OnEnable(On.PlayMakerFSM.orig_OnEnable orig, PlayMakerFSM self) {
             orig(self);
 
-            if (self.FsmName == "Mage Lord 2" && self.gameObject.name == "Dream Mage Lord") {
+            if (self.FsmName == "Mage Lord 2" && self.gameObject.name == "Dream Mage Lord Phase2") {
                 self.GetAction<SendRandomEvent>("Shift?", 0).weights = new FsmFloat[]{1f, 0f};
             }
         }
